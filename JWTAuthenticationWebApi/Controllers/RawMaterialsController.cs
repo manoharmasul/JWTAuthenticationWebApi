@@ -52,5 +52,23 @@ namespace JWTAuthenticationWebApi.Controllers
                 return Ok(baseResponse);
             }
         }
+        [HttpGet("GetRawMaterialsById")]
+        public async Task<IActionResult> GetRawMaterialsById(int Id)
+        {
+            BaseResponseModel baseResponse = new BaseResponseModel();
+
+            var result = await materialAsync.GetRawMaterialsById(Id);
+            if (result!=null)
+            {
+                baseResponse.StatusMassage = $"Material Data Fetch Successfully...!";
+                baseResponse.ResponseData = result;
+                return Ok(baseResponse);
+            }
+            else
+            {
+                baseResponse.StatusMassage = $"Materials are not available..! with Id {Id}";
+                return Ok(baseResponse);
+            }
+        }
     }
 }

@@ -32,9 +32,10 @@ namespace JWTAuthenticationWebApi.Repository
             return materials;
         }
 
-        public Task<RawMaterials> GetRawMaterialsById(int Id)
+        public async Task<RawMaterials> GetRawMaterialsById(int Id)
         {
-            throw new NotImplementedException();
+            var materls=await context.Materials.Where(x=>x.Id==Id && x.IsDeleted==false).FirstOrDefaultAsync();
+            return materls;
         }
 
         public Task<int> UpdateMaterial(RawMaterials material)
