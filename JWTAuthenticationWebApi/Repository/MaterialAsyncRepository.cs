@@ -38,9 +38,17 @@ namespace JWTAuthenticationWebApi.Repository
             return materls;
         }
 
-        public Task<int> UpdateMaterial(RawMaterials material)
+        public async Task<int> UpdateMaterial(RawMaterials material)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            var find = await context.Materials.FindAsync(material.Id);
+            if (find != null)
+            {
+                var query = context.Update(find);
+               result=await context.SaveChangesAsync();
+            }
+
+            return result;
         }
     }
 }

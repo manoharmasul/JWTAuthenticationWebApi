@@ -51,7 +51,7 @@ namespace JWTAuthenticationWebApi.Controllers
             
         }
         [HttpPost]
-        public async Task<IActionResult> UserLogIn([FromBody] UserLogInModel loginRequest)
+        public async Task<IActionResult> UserLogIn(UserLogInModel loginRequest)
         {
             BaseResponseModel baseResponse=new BaseResponseModel();
             //your logic for login process

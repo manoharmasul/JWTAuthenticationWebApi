@@ -70,5 +70,22 @@ namespace JWTAuthenticationWebApi.Controllers
                 return Ok(baseResponse);
             }
         }
+        [HttpPut("UpdateMaterials")]
+        public async Task<IActionResult> UpdateMaterials(RawMaterials materials)
+        {
+            BaseResponseModel baseResponse=new BaseResponseModel();
+            var result=await materialAsync.UpdateMaterial(materials);
+           if(result>0)
+           {
+                baseResponse.StatusMassage = $"Material updated successfully....!";
+                baseResponse.ResponseData = result;
+                return Ok(baseResponse);
+           }
+           else
+           {
+                baseResponse.StatusMassage = $"Something is wrong....!";
+                return Ok(baseResponse);
+           }
+        }
     }
 }
