@@ -18,6 +18,7 @@ namespace JWTAuthenticationWebApi.Repository
 
         public async Task<int> AddNewUser(User user)
         {
+            user.IsDeleted = false;
               var query=await context.AddAsync(user);
              var result=await context.SaveChangesAsync();
            

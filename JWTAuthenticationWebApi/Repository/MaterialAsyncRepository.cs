@@ -15,6 +15,7 @@ namespace JWTAuthenticationWebApi.Repository
 
         public async Task<int> AddNewMaterial(RawMaterials material)
         {
+            material.IsDeleted = false;
             var query= context.AddAsync<RawMaterials>(material);
             var result=await context.SaveChangesAsync();    
 

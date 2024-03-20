@@ -2,7 +2,7 @@
 
 namespace JWTAuthenticationWebApi.Model
 {
-    [Table("RawMaterials")]
+    [Table("tblMaterial")]
     public class RawMaterials:BaseModel
     {
         //Id	MaterialName
